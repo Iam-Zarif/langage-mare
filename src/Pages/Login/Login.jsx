@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import {  FaGoogle } from "react-icons/fa";
-
+import {  FaGoogle, FaUserAlt } from "react-icons/fa";
+import Title from "../../Title/Title";
+import { RiLockPasswordFill } from "react-icons/ri";
 const Login = () => {
+    Title("MARE | LOG IN")
     const handleLogIn = (e) =>{
         e.preventDefault();
         const form = e.target;
@@ -13,43 +15,60 @@ const Login = () => {
     return (
       <div className="">
         <div className="hero  bg-base-200 py-20">
-          <div className="hero-content flex-col ">
-            <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-bold text-center">Login now!</h1>
+          <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-0">
+            <div className="text-center ">
+              <img
+                src="https://media.tenor.com/p0G_bmA2vSYAAAAd/login.gif"
+                alt=""
+              />
             </div>
             <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
               <div className="card-body">
+                <div>
+                  <h1 className="text-center mb-5 text-3xl font-bold">
+                    PLease Login
+                  </h1>
+                </div>
                 <form onSubmit={handleLogIn}>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Email</span>
+                      <span className="label-text mx-auto text-lg flex items-center gap-2">
+                        <FaUserAlt /> Email
+                      </span>
                     </label>
                     <input
+                    required
                       name="email"
                       type="email"
                       placeholder="email"
-                      className="w-44 lg:w-96 input input-bordered"
+                      className="mx-auto my-2 w-60 lg:w-96 input input-bordered"
                     />
                   </div>
-                  <div className="form-control">
+                  <div className="form-control mt-4">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                      <span className="label-text mx-auto text-lg flex items-center gap-2">
+                        <RiLockPasswordFill /> Password
+                      </span>
                     </label>
                     <input
+                    required
                       name="password"
                       type="password"
                       placeholder="password"
-                      className="w-44 lg:w-96 input input-bordered"
+                      className="mx-auto my-2 w-60 lg:w-96 input input-bordered"
                     />
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary mt-4">Login</button>
                   </div>
                 </form>
                 <div className="mt-5">
                   <p>
                     New to Language Mare?{" "}
-                    <Link to="/register" className="text-orange-500 font-semibold">
+                    <Link
+                      to="/register"
+                      className="text-orange-500 font-semibold"
+                    >
                       Register
                     </Link>
                   </p>

@@ -5,22 +5,22 @@ const Navbar = () => {
     const navItems = (
       <>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className='text-lg font-semibold'>Home</Link>
         </li>
         <li>
-          <Link>Instruction</Link>
+          <Link className='text-lg font-semibold'>Instruction</Link>
         </li>
         <li>
-          <Link>Classes</Link>
+          <Link className='text-lg font-semibold'>Classes</Link>
         </li>
         <li>
-          <Link>Dashboard</Link>
+          <Link className='text-lg font-semibold'>Dashboard</Link>
         </li>
       </>
     );
     return (
-      <div className="pt-5">
-        <div className="navbar bg-base-100">
+      <div className=" sticky top-0 z-50">
+        <div className="navbar bg-base-100 pt-5 sticky">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className=" menu menu-sm  dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
               >
                 {navItems}
               </ul>
@@ -55,7 +55,9 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn" to="login">Log In</Link>
+            <Link className="btn" to="login">
+              Log In
+            </Link>
           </div>
         </div>
       </div>
