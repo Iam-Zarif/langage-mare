@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 
 const HomeInstructors = () => {
@@ -9,9 +10,14 @@ const HomeInstructors = () => {
          .then((data) => setInstructors(data));
      });
     return (
-      <div>
+      <div className="mt-20">
+        <hr className="w-1/3 mx-auto" />
+        <SectionTitle
+          subHeading={"Check it Out"}
+          heading={"Most Popular Instructors"}
+        ></SectionTitle>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 my-20">
-          {instructors.slice(0,6).map((instructor) => {
+          {instructors.slice(0, 6).map((instructor) => {
             return (
               <div key={instructor._id} className="card w-96 glass mx-auto">
                 <figure>

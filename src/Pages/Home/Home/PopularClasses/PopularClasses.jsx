@@ -8,9 +8,11 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 import SectionTitle from "../../../../SectionTitle/SectionTitle";
+import Button from "../../../../Button/Button";
 const PopularClasses = () => {
   return (
     <div className="container mx-auto">
+      <hr className="w-1/3 mx-auto"/>
         <SectionTitle subHeading={"Check it Out"} heading={"Most Popular Classes"}></SectionTitle>
       <Swiper
         slidesPerView={3}
@@ -34,7 +36,7 @@ const PopularClasses = () => {
               <h2 className="card-title">Shoes!</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
+               <Button name={"Buy Now"}></Button>
               </div>
             </div>
           </div>
