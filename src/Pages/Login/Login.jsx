@@ -6,12 +6,21 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import Auth from "../../Hooks/Auth";
 import Swal from "sweetalert2";
 const Login = () => {
-  const { logIn } = Auth();
+  
+  const { logIn, googleSignIn } = Auth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/"
 
   Title("MARE | LOG IN");
+  const handleGoogleLogin =() =>{
+    googleSignIn()
+    .then(res =>{
+      const googleUser = res.googleUser;
+      console.log(googleUser) ;
+      navigate(from, { replace: true });
+    }).catch(error => console.log(error))
+  }
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -103,7 +112,7 @@ const Login = () => {
                 <p className="divider ">OR</p>
               </div>
               <div className="mx-auto mt-5 text-orange-500 bg-black p-5 rounded-full">
-                <Link>
+                <Link onClick={handleGoogleLogin}>
                   <FaGoogle />
                 </Link>
               </div>
