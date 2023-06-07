@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { FaGoogle, FaUserAlt } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle, FaUserAlt } from "react-icons/fa";
 import Title from "../../Title/Title";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { AiTwotoneMail, AiTwotoneUnlock } from "react-icons/ai";
@@ -8,8 +8,14 @@ import { Link } from "react-router-dom";
 import Auth from "../../Hooks/Auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false); // Add showPassword state
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
@@ -101,36 +107,43 @@ const Register = () => {
                     )}
                   </div>
                   <div className="flex flex-col lg:flex-row gap-5">
-                    <div className="form-control mt-4">
+                    <div className="form-control mt-4 relative">
                       <label className="label">
                         <span className="label-text mx-auto text-lg flex items-center gap-2">
                           <RiLockPasswordFill /> Password
                         </span>
                       </label>
-                      <input
-                        {...register("password", {
-                          required: true,
-                          minLength: 6,
-                          pattern: /^(?=.*[A-Z])(?=.*[!@#$%&*]).*$/,
-                        })}
-                        name="password"
-                        type="password"
-                        placeholder="password"
-                        className="mx-auto w-60 lg:w-72 input input-bordered"
-                      />
-
+                      <div className="input input-bordered flex">
+                        <input
+                          {...register("password", {
+                            required: true,
+                            minLength: 6,
+                            pattern: /^(?=.*[A-Z])(?=.*[!@#$%&*]).*$/,
+                          })}
+                          name="password"
+                          type={showPassword ? "text" : "password"}
+                          placeholder="password"
+                          className="flex-grow py-2 px-4 focus:outline-none"
+                        />
+                        <span
+                          className="flex items-center px-3 cursor-pointer"
+                          onClick={togglePasswordVisibility}
+                        >
+                          {showPassword ? <FaEye />:<FaEyeSlash />  }
+                        </span>
+                      </div>
                       {errors.password?.type === "required" && (
-                        <p className="text-center text-red-500">
+                        <p className="text-red-500 mt-1">
                           Password is required
                         </p>
                       )}
                       {errors.password?.type === "minLength" && (
-                        <p className="text-center text-red-500">
-                          At Lest 6 characters
+                        <p className="text-red-500 mt-1">
+                          At least 6 characters
                         </p>
                       )}
                       {errors.password?.type === "pattern" && (
-                        <p className="text-center text-red-500">
+                        <p className="text-red-500 mt-1">
                           At least one uppercase and one special character
                         </p>
                       )}
@@ -154,7 +167,7 @@ const Register = () => {
                   <div className="form-control mt-4">
                     <label className="label">
                       <span className="label-text mx-auto text-lg flex items-center gap-2">
-                        <MdAddPhotoAlternate/>
+                        <MdAddPhotoAlternate />
                         Photo
                       </span>
                     </label>

@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link className='text-lg font-semibold'>Classes</Link>
         </li>
         <li>
-          <Link className='text-lg font-semibold'>Dashboard</Link>
+          <Link className='text-lg font-semibold' to="/dashboard">Dashboard</Link>
         </li>
       </>
     );
