@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css'
 import Auth from '../../Hooks/Auth';
 
@@ -13,16 +13,41 @@ const Navbar = () => {
     const navItems = (
       <>
         <li>
-          <Link to="/" className='text-lg font-semibold'>Home</Link>
+          <NavLink
+            exact
+            to="/"
+            activeClassName="active"
+            className="text-lg font-semibold navItems"
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link className='text-lg font-semibold'>Instructors</Link>
+          <NavLink
+            to="/instructors"
+            activeClassName="active"
+            className="text-lg font-semibold navItems"
+          >
+            Instructors
+          </NavLink>
         </li>
         <li>
-          <Link className='text-lg font-semibold'>Classes</Link>
+          <NavLink
+            to="/classes"
+            activeClassName="active"
+            className="text-lg font-semibold navItems"
+          >
+            Classes
+          </NavLink>
         </li>
         <li>
-          <Link className='text-lg font-semibold' to="/dashboard">Dashboard</Link>
+          <NavLink
+            to="/dashboard"
+            activeClassName="active"
+            className="text-lg font-semibold navItems"
+          >
+            Dashboard
+          </NavLink>
         </li>
       </>
     );
@@ -62,7 +87,10 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end flex lg:flex-row gap-2 flex-col opacity-80 lg:opacity-100 ml-24 lg:ml-0">
+            {user && <>
+            <img className='w-14 rounded-full' src={user.photoURL} alt="" />
+            </>}
             {user ? (
               <>
                 <Link className="btn" onClick={handleLogOut}>

@@ -4,13 +4,14 @@ import Title from "../../Title/Title";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { AiTwotoneMail, AiTwotoneUnlock } from "react-icons/ai";
 import { MdAddPhotoAlternate, MdOutlineAddPhotoAlternate } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Auth from "../../Hooks/Auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false); // Add showPassword state
 
   const togglePasswordVisibility = () => {
@@ -22,7 +23,7 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser } = Auth();
+  const { createUser, updateUserInfo } = Auth();
   const onSubmit = (data) => {
     const pass = data.password;
     const conf = data.confirm;
@@ -37,6 +38,11 @@ const Register = () => {
     // console.log(data);
     createUser(data.email, data.password)
       .then((res) => {
+        updateUserInfo(data.name, data.photo)
+        .then(res =>{
+          const user = res.user;
+          console.log(user)
+        }).catch(error => console.log(error))
         Swal.fire({
           title: "Hello There",
           text: "Successfully Registered",
@@ -49,6 +55,7 @@ const Register = () => {
         const user = res.user;
         // console.log(user)
         reset();
+        navigate("/")
       })
       .catch((error) => console.log(error));
   };
