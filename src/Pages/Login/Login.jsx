@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import {  FaGoogle, FaUserAlt } from "react-icons/fa";
 import Title from "../../Title/Title";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Auth from "../../Hooks/Auth";
+import Swal from "sweetalert2";
 const Login = () => {
+  const { logIn } = Auth();
+  
     Title("MARE | LOG IN")
     const handleLogIn = (e) =>{
         e.preventDefault();
@@ -10,7 +15,22 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         const user ={email,password};
-        console.log(user)
+        console.log(user);
+        logIn(email,password)
+        .then(res =>{
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          const user = res.user;
+          console.log(user)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
     return (
       <div className="">
@@ -59,7 +79,7 @@ const Login = () => {
                     />
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn btn-primary mt-4">Login</button>
+                    <button className="btn btn-primary mt-4" type="submit">Login</button>
                   </div>
                 </form>
                 <div className="mt-5">

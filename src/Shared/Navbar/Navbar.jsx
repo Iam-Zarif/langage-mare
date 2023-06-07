@@ -1,7 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
 import './Navbar.css'
+import Auth from '../../Hooks/Auth';
 
 const Navbar = () => {
+  const { user, logOut } = Auth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
     const navItems = (
       <>
         <li>
@@ -55,9 +63,19 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn" to="login">
-              Log In
-            </Link>
+            {user ? (
+              <>
+                <Link className="btn" onClick={handleLogOut}>
+                  Log Out
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="btn" to="login">
+                  Log In
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
