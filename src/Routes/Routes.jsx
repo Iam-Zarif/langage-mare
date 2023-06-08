@@ -10,6 +10,8 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import SelectedClasses from "../Pages/Dashboard/SelectedClasses/SelectedClasses";
 import Enrolled from "../Pages/Dashboard/Enrolled/Enrolled";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,10 +22,13 @@ const router = createBrowserRouter([
   {path:"/dashboard" , element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
 children:[
   {path:"selectedClass" , element:<SelectedClasses></SelectedClasses>},
-  {path:"enrolled" , element:<Enrolled></Enrolled>}
+  {path:"enrolled" , element:<Enrolled></Enrolled>},
+  {path:"payment" , element:<Payment></Payment>},
+  {path:"history" , element:<PaymentHistory></PaymentHistory>}
 ]},
   {path:"/instructors" , element:<Instructors></Instructors>},
-  {path:"/classes" , element:<Classes></Classes>}
+  {path:"/classes" , element:<Classes></Classes>},
+  
   ],
   },
   { path: "/*", element: <Error></Error> },
