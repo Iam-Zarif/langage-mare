@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Title from "../Title/Title";
-import { MdFlightClass } from "react-icons/md";
-import { TbArmchair } from "react-icons/tb";
-import { FaCcAmazonPay } from "react-icons/fa";
+import { MdAdd, MdFlightClass } from "react-icons/md";
+import { GiSchoolBag } from "react-icons/gi";
+
+import { TbArmchair, TbChairDirector } from "react-icons/tb";
+import { FaCcAmazonPay,  FaUserCheck } from "react-icons/fa";
 import { AiOutlineHistory } from "react-icons/ai";
 import './dashboard.css'
 
@@ -42,6 +44,50 @@ const Dashboard = () => {
                 <li>
                   <NavLink activeClassName ="active" to="/dashboard/history" className="text-lg dashNav"><AiOutlineHistory/> Payment History</NavLink>
                 </li>
+
+
+
+
+
+
+
+                
+                <li>
+                  <p className="text-xl text-white font-bold">Instructor Home</p>
+                </li>
+                <li>
+                  <NavLink activeClassName ="active" to="/dashboard/selectedClass" className="text-lg dashNav"><MdAdd/> Add A Class</NavLink>
+                </li>
+                <li>
+                  <NavLink activeClassName ="active" to="/dashboard/enrolled" className="text-lg dashNav"><TbChairDirector/> My  classes</NavLink>
+                </li>
+               
+
+
+
+
+
+
+
+                
+                <li>
+                  <p className="text-xl text-white font-bold">Admin Home</p>
+                </li>
+                <li>
+                  <NavLink activeClassName ="active" to="/dashboard/selectedClass" className="text-lg dashNav"><GiSchoolBag/> Manage Classes</NavLink>
+                </li>
+                <li>
+                  <NavLink activeClassName ="active" to="/dashboard/enrolled" className="text-lg dashNav"><FaUserCheck/> Manage Users</NavLink>
+                </li>
+                
+
+
+
+
+
+
+
+                
               </ul>
             </div>
           </div>

@@ -15,9 +15,30 @@ const Login = () => {
   Title("MARE | LOG IN");
   const handleGoogleLogin =() =>{
     googleSignIn()
-    .then(res =>{
-      const googleUser = res.googleUser;
-      console.log(googleUser) ;
+    .then(result =>{
+      const user = result.user;
+      const savedUser = { name: user.displayName, email: user.email };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(savedUser), // Corrected variable name from `savedUser` to `user`
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User Created Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((error) => console.log(error));
+      console.log(user);
       navigate(from, { replace: true });
     }).catch(error => console.log(error))
   }

@@ -7,6 +7,7 @@ import CheckOutForm from "./CheckOutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_pk_payment);
 
 const Payment = () => {
+  
     return (
       <div>
         <SectionTitle

@@ -39,9 +39,28 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((res) => {
         updateUserInfo(data.name, data.photo)
-        .then(res =>{
-          const user = res.user;
-          console.log(user)
+        .then( ()=>{
+          const savedUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
+          reset();
         }).catch(error => console.log(error))
         Swal.fire({
           title: "Hello There",
