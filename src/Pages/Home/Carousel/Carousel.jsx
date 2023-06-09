@@ -16,7 +16,7 @@ const Carousel = () => {
   return (
     <div className="my-10">
       <Swiper
-      autoplay
+      autoplay 
         pagination={{
           type: "fraction",
         }}

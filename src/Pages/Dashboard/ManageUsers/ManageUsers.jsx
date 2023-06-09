@@ -55,7 +55,7 @@ const ManageUsers = () => {
           Swal.fire({
             title: `${user.name} is Admin Now`,
             showClass: {
-              popup: "animate__animated animate__flip",
+              popup: "animate__animated animate__backInDown",
             },
             hideClass: {
               popup: "animate__animated animate__fadeOutUp",
@@ -87,7 +87,7 @@ const ManageUsers = () => {
           Swal.fire({
             title: `${user.name} is instructor Now`,
             showClass: {
-              popup: "animate__animated animate__flip",
+              popup: "animate__animated animate__backInDown",
             },
             hideClass: {
               popup: "animate__animated animate__fadeOutUp",

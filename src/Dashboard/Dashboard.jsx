@@ -90,7 +90,7 @@ const Dashboard = () => {
                   <li>
                     <NavLink
                       activeClassName="active"
-                      to="/dashboard/selectedClass"
+                      to="/dashboard/addAClass"
                       className="text-lg dashNav"
                     >
                       <MdAdd /> Add A Class
@@ -107,7 +107,7 @@ const Dashboard = () => {
                   </li>
                 </>
               )}
-              {!admin && !instructor &&(
+              {!admin && !instructor && (
                 <>
                   <li>
                     <p className="text-xl text-white font-bold">Student Home</p>
