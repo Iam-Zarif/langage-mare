@@ -8,9 +8,9 @@ const Instructors = () => {
     Title("MARE | INSTRUCTORS")
     const [instructors,setInstructors] =useState([])
     useEffect(() =>{
-        fetch("http://localhost:5000/users")
-        .then(res => res.json())
-        .then(data => setInstructors(data))
+        fetch("http://localhost:5000/instructor")
+          .then((res) => res.json())
+          .then((data) => setInstructors(data));
     })
     const makeInstructor = instructors.filter(
       (instructor) => instructor.role === "instructor"
@@ -19,7 +19,7 @@ const Instructors = () => {
     return (
       <div>
         <h1 className="text-center mt-14 text-4xl">
-          Total instructors : {instructors.length}
+          Total instructors : {makeInstructor.length}
         </h1>
         <div>
           <SectionTitle

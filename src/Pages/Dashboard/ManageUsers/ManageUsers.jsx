@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 
 const ManageUsers = () => {
+  const token = localStorage.getItem("access-token");
+
   const [disabledButtons, setDisabledButtons] = useState([]);
 
   useEffect(() => {
@@ -23,7 +25,11 @@ const ManageUsers = () => {
   }, [disabledButtons]);
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("http://localhost:5000/users",{
+      headers: {
+        authorization : `bearer ${token}`
+      }
+    });
     return res.json();
   });
 
