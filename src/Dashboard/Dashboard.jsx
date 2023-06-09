@@ -99,7 +99,7 @@ const Dashboard = () => {
                   <li>
                     <NavLink
                       activeClassName="active"
-                      to="/dashboard/enrolled"
+                      to="/dashboard/myClasses"
                       className="text-lg dashNav"
                     >
                       <TbChairDirector /> My classes

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 
 const Timer = () => {
@@ -41,8 +42,9 @@ const Timer = () => {
        return () => clearInterval(interval);
      }, []);
     return (
-      <div className="my-10">
-        <div className="mt-36">
+      <div className="my-20">
+        <SectionTitle subHeading={"Check it Out"} heading={"Your Special Event"}></SectionTitle>
+        <div className="mt-10">
           <hr className="w-1/3 mx-auto" />
           <div className="mt-16">
             <p className="text-center text-3xl font-bold">
