@@ -50,15 +50,15 @@ const Register = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              if (data.insertedId) {
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "User Created Successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-              }
+              // if (data.insertedId) {
+              //   Swal.fire({
+              //     position: "top-end",
+              //     icon: "success",
+              //     title: "User Created Successfully",
+              //     showConfirmButton: false,
+              //     timer: 1500,
+              //   });
+              // }
             });
           reset();
         }).catch(error => console.log(error))

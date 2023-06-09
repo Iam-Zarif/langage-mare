@@ -12,24 +12,38 @@ import SelectedClasses from "../Pages/Dashboard/SelectedClasses/SelectedClasses"
 import Enrolled from "../Pages/Dashboard/Enrolled/Enrolled";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children: [{ path: "/", element: <Home></Home> },
-  {path:"/login" , element:<Login></Login>},
-  {path:"/register" , element:<Register></Register>},
-  {path:"/dashboard" , element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-children:[
-  {path:"selectedClass" , element:<SelectedClasses></SelectedClasses>},
-  {path:"enrolled" , element:<Enrolled></Enrolled>},
-  {path:"payment" , element:<Payment></Payment>},
-  {path:"history" , element:<PaymentHistory></PaymentHistory>}
-]},
-  {path:"/instructors" , element:<Instructors></Instructors>},
-  {path:"/classes" , element:<Classes></Classes>},
-  
-  ],
+    children: [
+      { path: "/", element: <Home></Home> },
+      { path: "/login", element: <Login></Login> },
+      { path: "/register", element: <Register></Register> },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "selectedClass",
+            element: <SelectedClasses></SelectedClasses>,
+          },
+          { path: "enrolled", element: <Enrolled></Enrolled> },
+          { path: "payment", element: <Payment></Payment> },
+          { path: "history", element: <PaymentHistory></PaymentHistory> },
+          { path: "manageUsers", element: <ManageUsers></ManageUsers> },
+          { path: "manageClasses" ,element:<ManageClasses></ManageClasses> },
+        ],
+      },
+      { path: "/instructors", element: <Instructors></Instructors> },
+      { path: "/classes", element: <Classes></Classes> },
+    ],
   },
   { path: "/*", element: <Error></Error> },
 ]);
