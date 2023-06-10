@@ -80,8 +80,8 @@ const Navbar = () => {
               </ul>
             </div>
             <Link className="btn btn-ghost logo">
-              <span className="text-4xl ">Language </span>
-              <span className="text-3xl text-orange-500">Mare</span>
+              <span className="text-lg lg:text-2xl">Language </span>
+              <span className="text-xl lg:text-4xl text-orange-500">Mare</span>
             </Link>
             <div>
               <img

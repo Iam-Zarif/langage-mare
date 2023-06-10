@@ -16,7 +16,7 @@ const Carousel = () => {
   return (
     <div className="my-10">
       <Swiper
-      autoplay 
+        autoplay
         pagination={{
           type: "fraction",
         }}
@@ -24,6 +24,13 @@ const Carousel = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
+        <SwiperSlide>
+          <img
+            className="container mx-auto lg:w-full lg:h-[700px]"
+            src="https://images.vexels.com/content/198604/preview/language-course-education-cover-design-a4073d.png"
+            alt=""
+          />
+        </SwiperSlide>
         <SwiperSlide>
           <img
             className="container mx-auto lg:w-full lg:h-[700px]"
@@ -56,13 +63,6 @@ const Carousel = () => {
           <img
             className="container mx-auto lg:w-full lg:h-[700px]"
             src="https://images.squarespace-cdn.com/content/v1/5a9850b95417fc1f5c48bde0/1678589815864-PTOI46205FZ075GO1WVO/Presentation22.png"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="container mx-auto lg:w-full lg:h-[700px]"
-            src="https://images.vexels.com/content/198604/preview/language-course-education-cover-design-a4073d.png"
             alt=""
           />
         </SwiperSlide>

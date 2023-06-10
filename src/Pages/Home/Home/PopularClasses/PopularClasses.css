@@ -1,0 +1,24 @@
+/* PopularClasses.css */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  border-radius: 8px;
+  background-color: #ffffff13;
+}
+
+.card img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.card-title {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.card-actions {
+  margin-top: 15px;
+}

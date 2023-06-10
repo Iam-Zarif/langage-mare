@@ -6,21 +6,21 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     return (
       <div className="">
-        <footer className="footer p-10 bg-neutral text-neutral-content items-center  mx-auto">
+        <footer className="flex flex-col lg:flex-row lg:justify-around  footer p-10 bg-neutral text-neutral-content items-center  mx-auto">
           <div>
             <img
-            className="w-[100px] rounded-full"
+              className="w-[100px] rounded-full mx-auto"
               src="https://i.ibb.co/kSH5NjS/lovepik-real-estate-building-logo-png-image-401737175-wh1200.png"
               alt=""
             />
-            <p>
-              ACME Industries Ltd.
+            <p className="text-lg">
+              Language <span className="text-yellow-500">Mare</span>
               <br />
-              Providing reliable tech since 1992
+              Providing reliable education since 1992
             </p>
           </div>
           <div>
-            <span className="footer-title">Social</span>
+            <span className="footer-title mt-10 lg:mt-0">Social</span>
             <div className="grid grid-flow-col gap-4">
               <Link>
                 <svg
@@ -60,7 +60,7 @@ const Footer = () => {
         </footer>
         <footer className="footer footer-center p-4 bg-base-300 text-base-content">
           <div>
-            <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+            <p>Copyright © 2023 - All right reserved by LANGUAGE MARE</p>
           </div>
         </footer>
       </div>

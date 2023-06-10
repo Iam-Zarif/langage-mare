@@ -15,24 +15,11 @@ import { useEffect, useState } from "react";
 const Dashboard = () => {
   const [instructor] = useInstructor();
   const [admin, isAdminLoading] = useAdmin();
-  // const admin =true
-  // if(isAdminLoading){
-  //   return <div><h1>Loading</h1></div>
-  // }
-//   const [student ,setStudent] = useState(false)
 
-//   useEffect(() =>{
-// if (!admin && !instructor) {
-//   setStudent(true);
-// }
-//   },[admin,instructor])
-  
   console.log(admin);
-  console.log(instructor)
+  console.log(instructor);
 
-  // const isAdmin = true;
   
-  const isStudent = false;
   Title("MARE | DASHBOARD");
   return (
     <div>
