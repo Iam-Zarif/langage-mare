@@ -83,14 +83,23 @@ const Navbar = () => {
               <span className="text-4xl ">Language </span>
               <span className="text-3xl text-orange-500">Mare</span>
             </Link>
+            <div>
+              <img
+                className="w-[100px] rounded-full"
+                src="https://i.ibb.co/kSH5NjS/lovepik-real-estate-building-logo-png-image-401737175-wh1200.png"
+                alt=""
+              />
+            </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
           <div className="navbar-end flex lg:flex-row gap-2 flex-col opacity-80 lg:opacity-100 ml-24 lg:ml-0">
-            {user && <>
-            <img className='w-14 rounded-full' src={user.photoURL} alt="" />
-            </>}
+            {user && (
+              <>
+                <img className="w-20 rounded-full" src={user.photoURL} alt="" />
+              </>
+            )}
             {user ? (
               <>
                 <Link className="btn" onClick={handleLogOut}>
