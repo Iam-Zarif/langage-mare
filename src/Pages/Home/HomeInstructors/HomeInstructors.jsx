@@ -31,10 +31,10 @@ const HomeInstructors = () => {
         >
           {instructors?.slice(0, 6).map((instructor) => {
             return (
-              <div key={instructor._id} className="card w-96 glass mx-auto">
+              <div key={instructor._id} className=" w-96 glass mx-auto">
                 <figure>
                   <img
-                    className="h-80 w-96"
+                    className="h-72 w-96"
                     src={instructor.photo}
                     alt="Instructors"
                   />

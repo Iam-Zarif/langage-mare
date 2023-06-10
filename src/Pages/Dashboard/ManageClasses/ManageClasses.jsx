@@ -17,32 +17,40 @@ const ManageClasses = () => {
   }, [token]);
 
   const handleApprove = (approve) => {
-  const url = `http://localhost:5000/all/${approve._id}`;
+    const url = `http://localhost:5000/all/${approve._id}`;
 
-  fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ status: "approve" }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.modifiedCount > 0) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: `Class is now approved`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "approve" }),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Class pending`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
+          // Update the class status locally
+          setClasses((prevClasses) =>
+            prevClasses.map((classItem) =>
+              classItem._id === approve._id
+                ? { ...classItem, status: "approve" }
+                : classItem
+            )
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div className="">
@@ -62,13 +70,13 @@ const ManageClasses = () => {
                 <th>Instructor</th>
                 <th>Available Sits</th>
                 <th>Price</th>
+                <th>Main Status</th>
+                <th>Approve button</th>
+                <th>Denied button</th>
               </tr>
             </thead>
             <tbody>
               {/* rows */}
-              {
-                console.log(classes)
-              }
               {classes.map((singleClass, index) => (
                 <tr key={singleClass._id}>
                   <th>
@@ -99,24 +107,33 @@ const ManageClasses = () => {
                   </td>
                   <td>{singleClass.sit}</td>
                   <td>$ {singleClass.price}</td>
-                  <td>
-                    <button className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white">
-                      Pending
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleApprove(singleClass)}
-                      className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
-                    >
-                      Approved
-                    </button>
-                  </td>
-                  <td>
-                    <button className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white">
-                      Denied
-                    </button>
-                  </td>
+                  {singleClass.status === "pending" && (
+                    <>
+                      <td>
+                        <button className="btn  hover:border-b-2 font-bold text-yellow-500 hover:text-white">
+                          Pending
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleApprove(singleClass)}
+                          className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
+                        >
+                          Approved
+                        </button>
+                      </td>
+                      <td>
+                        <button className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white">
+                          Denied
+                        </button>
+                      </td>
+                    </>
+                  )}
+                  {singleClass.status === "approve" && (
+                    <td colSpan="3">
+                      <button className="btn">Approved</button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

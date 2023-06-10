@@ -30,10 +30,10 @@ const Instructors = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 my-20">
             {makeInstructor.map((instructor) => {
               return (
-                <div key={instructor._id} className="card w-96 glass mx-auto">
+                <div key={instructor._id} className=" w-96 glass mx-auto">
                   <figure>
                     <img
-                      className="h-[200px]"
+                      className="h-72 w-96"
                       src={instructor.photo}
                       alt="Instructors"
                     />
