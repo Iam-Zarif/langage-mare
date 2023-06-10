@@ -2,6 +2,7 @@
 import Swal from "sweetalert2";
 import Auth from "../../../Hooks/Auth";
 import SectionTitle from "../../../SectionTitle/SectionTitle";
+import { AiOutlineSelect } from "react-icons/ai";
 
 
 const AddAClass = () => {
@@ -32,19 +33,22 @@ status : "pending"
         "content-type": "application/json",
         authorization: `bearer ${token}`,
       },
-    }).then(res => res.json()).then(data =>{
-      if(data.insertedId){
-        Swal.fire({
-          title: `Successfully Added Your class `,
-          showClass: {
-            popup: "animate__animated animate__wobble",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
-        });
-      }
+      body: JSON.stringify(addClass),
     })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: `Successfully Added Your class `,
+            showClass: {
+              popup: "animate__animated animate__wobble",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
 
   }
     const {user} = Auth();
@@ -154,7 +158,7 @@ status : "pending"
                     </div>
                     <div className="form-control mt-6 col-span-2">
                       <button className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white">
-                        Add
+                     <AiOutlineSelect/>   Add
                       </button>
                     </div>
                   </form>
