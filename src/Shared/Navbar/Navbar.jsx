@@ -85,7 +85,7 @@ const Navbar = () => {
             </Link>
             <div>
               <img
-                className="w-[100px] rounded-full"
+                className="w-[70px] rounded-full"
                 src="https://i.ibb.co/kSH5NjS/lovepik-real-estate-building-logo-png-image-401737175-wh1200.png"
                 alt=""
               />
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="navbar-end flex lg:flex-row gap-2 flex-col opacity-80 lg:opacity-100 ml-24 lg:ml-0">
             {user && (
               <>
-                <img className="w-20 rounded-full" src={user.photoURL} alt="" />
+                <img className="w-14 rounded-full" src={user.photoURL} alt="" />
               </>
             )}
             {user ? (

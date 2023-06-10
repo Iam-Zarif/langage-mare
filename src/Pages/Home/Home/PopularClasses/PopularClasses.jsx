@@ -13,13 +13,19 @@ import "./PopularClasses.css"; // Create a CSS file for custom styles
 
 const PopularClasses = () => {
   return (
-    <div className="container mx-auto">
+    <div
+      className="container mx-auto"
+      data-aos="fade-right"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
       <hr className="w-1/3 mx-auto" />
       <SectionTitle
         subHeading={"Check it Out"}
         heading={"Most Popular Classes"}
       />
-      <Swiper autoplay
+      <Swiper
+        autoplay
         slidesPerView={1} // Display one card at a time on mobile
         spaceBetween={10} // Reduce the space between cards
         pagination={{

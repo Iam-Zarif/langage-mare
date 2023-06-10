@@ -12,13 +12,23 @@ const HomeInstructors = () => {
      });
      
     return (
-      <div className="mt-20">
+      <div
+        className="mt-20"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+      >
         <hr className="w-1/3 mx-auto" />
         <SectionTitle
           subHeading={"Check it Out"}
           heading={"Most Popular Instructors"}
         ></SectionTitle>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 my-20">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 my-20"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           {instructors?.slice(0, 6).map((instructor) => {
             return (
               <div key={instructor._id} className="card w-96 glass mx-auto">

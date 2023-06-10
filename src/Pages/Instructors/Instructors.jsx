@@ -33,7 +33,7 @@ const Instructors = () => {
                 <div key={instructor._id} className="card w-96 glass mx-auto">
                   <figure>
                     <img
-                      className="h-80 w-96"
+                      className="h-[200px]"
                       src={instructor.photo}
                       alt="Instructors"
                     />
