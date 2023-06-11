@@ -1,12 +1,33 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import Title from "../../Title/Title";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 import Auth from "../../Hooks/Auth";
+import Button from "../../Button/Button";
 
 const Classes = () => {
+  const {user} = Auth();
+  const selectClass =(myClass) =>{
+const selectedClass = {...myClass,email:user.email}
+    fetch("http://localhost:5000/selectedClasses", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(selectedClass),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Inserted");
+        }
+        console.log(data);
+      });
+    console.log(selectedClass)
+  }
   Title("MARE | CLASSES");
-  const { user } = Auth();
+ 
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
@@ -48,18 +69,14 @@ const Classes = () => {
                   <div className="card-actions justify-end">
                     {user ? (
                       <>
-                        <Link>
-                          <button className="btn btn-primary">
-                            Enroll now!
-                          </button>
+                        <Link onClick={() => selectClass(singleClass)}>
+                          <Button name={"Select"} >Enroll now!</Button>
                         </Link>
                       </>
                     ) : (
                       <>
                         <Link to="/login">
-                          <button className="btn btn-primary">
-                            Login to Enroll now!
-                          </button>
+                          <Button name={"Login to Enroll now!"}></Button>
                         </Link>
                       </>
                     )}

@@ -6,3 +6,7 @@
     font-family: cursive;
 }
 
+.navbar-dark {
+  background-color: #333; /* Example background color for dark theme */
+  color: #fff; /* Example text color for dark theme */
+}

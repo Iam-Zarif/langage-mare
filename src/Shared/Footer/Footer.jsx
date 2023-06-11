@@ -1,12 +1,15 @@
 /* eslint-disable react/no-unknown-property */
 
 import { Link } from "react-router-dom";
+import SectionTitle from "../../SectionTitle/SectionTitle";
 
 
 const Footer = () => {
     return (
       <div className="">
-        <footer className="flex flex-col lg:flex-row lg:justify-around  footer p-10 bg-neutral text-neutral-content items-center  mx-auto">
+        <SectionTitle subHeading={"Check it Out"} heading={"About Us and Contact"}></SectionTitle>
+        <hr  className="w-1/3 mx-auto mt-5"/>
+        <footer className="flex flex-col lg:flex-row lg:justify-around  footer p-10 bg-neutral text-neutral-content items-center  mx-auto mt-10">
           <div>
             <img
               className="w-[100px] rounded-full mx-auto"
