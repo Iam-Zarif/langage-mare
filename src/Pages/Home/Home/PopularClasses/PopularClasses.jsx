@@ -52,62 +52,9 @@ const PopularClasses = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="card bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="https://example.com/image2.jpg"
-                alt="Card 2"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Card 2</h2>
-              <p>Description for Card 2</p>
-              <div className="card-actions">
-                <Button name={"Buy Now"} />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="https://example.com/image3.jpg"
-                alt="Card 3"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Card 3</h2>
-              <p>Description for Card 3</p>
-              <div className="card-actions">
-                <Button name={"Buy Now"} />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        {/* Add more SwiperSlides for other cards */}
-        {/* Example: */}
-        {/* <SwiperSlide>
-          <div className="card bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="https://example.com/image4.jpg"
-                alt="Card 4"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Card 4</h2>
-              <p>Description for Card 4</p>
-              <div className="card-actions">
-                <Button name={"Buy Now"} />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide> */}
+       
+        
+        
       </Swiper>
     </div>
   );

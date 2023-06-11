@@ -51,7 +51,7 @@ const Timer = () => {
               Click Here to claim Your special free event
             </p>
             <section className="text-center mt-5">
-              <Link className=" text-center text-3xl font-bold border px-2 py-1 rounded-xl ml-5 text-green-500 hover:border-green-500">
+              <Link className=" text-center text-3xl font-bold border px-2 py-1 rounded-xl ml-5 text-white hover:border-yellow-700">
                 Claim
               </Link>
             </section>
@@ -74,7 +74,7 @@ const Timer = () => {
                 <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span
-                      className="text-green-500"
+                      className="text-yellow-500"
                       style={{ "--value": hours }}
                     >
                       {hours}
@@ -85,7 +85,7 @@ const Timer = () => {
                 <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span
-                      className="text-green-500"
+                      className="text-yellow-500"
                       style={{ "--value": minutes }}
                     >
                       {minutes}
@@ -96,7 +96,7 @@ const Timer = () => {
                 <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span
-                      className="text-green-500"
+                      className="text-yellow-500"
                       style={{ "--value": seconds }}
                     >
                       {seconds}

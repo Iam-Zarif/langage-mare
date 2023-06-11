@@ -16,8 +16,18 @@ const Login = () => {
   const handleGoogleLogin =() =>{
     googleSignIn()
     .then(result =>{
+      Swal.fire({
+        title: "Logged in With Google!!!",
+        showClass: {
+          popup: "animate__animated animate__bounceIn",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
       const user = result.user;
       const savedUser = { name: user.displayName, email: user.email };
+
       fetch("http://localhost:5000/users", {
         method: "POST",
         headers: {

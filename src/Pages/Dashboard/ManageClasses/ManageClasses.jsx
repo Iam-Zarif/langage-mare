@@ -32,16 +32,52 @@ const ManageClasses = () => {
           Swal.fire({
             position: "top-center",
             icon: "success",
-            title: `Class pending`,
+            title: `Class Accepted`,
             showConfirmButton: false,
             timer: 1500,
           });
 
           // Update the class status locally
           setClasses((prevClasses) =>
-            prevClasses.map((classItem) =>
+            prevClasses?.map((classItem) =>
               classItem._id === approve._id
                 ? { ...classItem, status: "approve" }
+                : classItem
+            )
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const handleDeny = (deny) => {
+    const url = `http://localhost:5000/all/${deny._id}`;
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "deny" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Class denied`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+
+          // Update the class status locally
+          setClasses((prevClasses) =>
+            prevClasses?.map((classItem) =>
+              classItem._id === deny._id
+                ? { ...classItem, status: "deny" }
                 : classItem
             )
           );
@@ -64,15 +100,14 @@ const ManageClasses = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="text-xl">
                 <th>Serial</th>
                 <th>Name</th>
                 <th>Instructor</th>
                 <th>Available Sits</th>
                 <th>Price</th>
                 <th>Main Status</th>
-                <th>Approve button</th>
-                <th>Denied button</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -123,7 +158,10 @@ const ManageClasses = () => {
                         </button>
                       </td>
                       <td>
-                        <button className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white">
+                        <button
+                          onClick={() => handleDeny(singleClass)}
+                          className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
+                        >
                           Denied
                         </button>
                       </td>
@@ -131,7 +169,13 @@ const ManageClasses = () => {
                   )}
                   {singleClass.status === "approve" && (
                     <td colSpan="3">
-                      <button className="btn">Approved</button>
+                      <button className="btn text-green-500">Approved</button>
+                    </td>
+                  )}
+                  {singleClass.status === "deny" && (
+                    <td colSpan="3" className="">
+                      <button className="btn">Denied</button>
+                      <button className="btn ml-24 text-red-500">Feedback</button>
                     </td>
                   )}
                 </tr>

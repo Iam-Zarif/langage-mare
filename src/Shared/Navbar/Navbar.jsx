@@ -2,12 +2,24 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css'
 import Auth from '../../Hooks/Auth';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const { user, logOut } = Auth();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          title: "Logged Out!!!",
+          timer: 1500,
+          showClass: {
+            popup: "animate__animated animate__flipInX",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      })
       .catch((error) => console.log(error));
   };
     const navItems = (

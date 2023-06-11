@@ -25,10 +25,10 @@ const ManageUsers = () => {
   }, [disabledButtons]);
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users",{
+    const res = await fetch("http://localhost:5000/users", {
       headers: {
-        authorization : `bearer ${token}`
-      }
+        authorization: `bearer ${token}`,
+      },
     });
     return res.json();
   });
@@ -40,8 +40,12 @@ const ManageUsers = () => {
           ...disabledUser,
           role: "admin",
         };
+      } else {
+        return {
+          ...disabledUser,
+          role: "",
+        };
       }
-      return disabledUser;
     });
     setDisabledButtons(updatedDisabledButtons);
 
@@ -72,8 +76,12 @@ const ManageUsers = () => {
           ...disabledUser,
           role: "instructor",
         };
+      } else {
+        return {
+          ...disabledUser,
+          role: "",
+        };
       }
-      return disabledUser;
     });
     setDisabledButtons(updatedDisabledButtons);
 
@@ -121,12 +129,11 @@ const ManageUsers = () => {
                 <th>Name</th>
                 <th>email</th>
                 <th>Role</th>
-                <th>Role</th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              {users.map((user, index) => (
+              {users?.map((user, index) => (
                 <tr key={user._id} className="container text-center">
                   <th>{index + 1}</th>
                   <td>
@@ -141,26 +148,36 @@ const ManageUsers = () => {
                     {user.role === "admin" ? (
                       <p>Admin</p>
                     ) : (
-                      <button
-                        disabled={isButtonDisabled(user._id, "admin")}
-                        onClick={() => handleAdmin(user)}
-                        className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
-                      >
-                        Make admin
-                      </button>
+                      <>
+                        {isButtonDisabled(user._id, "admin") ? (
+                          <p>Instructor</p>
+                        ) : (
+                          <button
+                            onClick={() => handleAdmin(user)}
+                            className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
+                          >
+                            Make admin
+                          </button>
+                        )}
+                      </>
                     )}
                   </td>
                   <td>
                     {user.role === "instructor" ? (
                       <p>Instructor</p>
                     ) : (
-                      <button
-                        disabled={isButtonDisabled(user._id, "instructor")}
-                        onClick={() => handleInstructor(user)}
-                        className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
-                      >
-                        Make Instructor
-                      </button>
+                      <>
+                        {isButtonDisabled(user._id, "instructor") ? (
+                          <p>Admin</p>
+                        ) : (
+                          <button
+                            onClick={() => handleInstructor(user)}
+                            className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
+                          >
+                            Make Instructor
+                          </button>
+                        )}
+                      </>
                     )}
                   </td>
                 </tr>

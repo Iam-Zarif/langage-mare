@@ -45,7 +45,7 @@ fetch("http://localhost:5000/myClasses", {
               <tbody>
                 {/* row 1 */}
                 <div className="text-6xl"></div>
-                {classes.map((singleClass) => (
+                {classes?.map((singleClass) => (
                   <tr key={singleClass._id}>
                     <th>
                       <label>

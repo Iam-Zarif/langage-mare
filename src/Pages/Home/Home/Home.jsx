@@ -11,8 +11,8 @@ const Home = () => {
         <div>
             <Carousel></Carousel>
             <PopularClasses></PopularClasses>
-            <Timer></Timer>
             <HomeInstructors></HomeInstructors>
+            <Timer></Timer>
         </div>
     );
 };

@@ -28,7 +28,7 @@ const Instructors = () => {
           ></SectionTitle>
           <div className="divider w-1/2 mx-auto"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 my-20">
-            {makeInstructor.map((instructor) => {
+            {makeInstructor?.map((instructor) => {
               return (
                 <div key={instructor._id} className=" w-96 glass mx-auto">
                   <figure>
