@@ -2,9 +2,22 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../../../SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
 
+
 const ManageClasses = () => {
   const token = localStorage.getItem("access-token");
   const [classes, setClasses] = useState([]);
+
+
+const handleFeedback =(e) =>{
+e.preventDefault();
+const form =e.target;
+const feedback = form.feedback.value;
+console.log(feedback);
+form.reset();
+window.location.reload();
+}
+
+
 
   useEffect(() => {
     fetch("http://localhost:5000/myClasses", {
@@ -175,8 +188,13 @@ const ManageClasses = () => {
                   )}
                   {singleClass.status === "deny" && (
                     <td colSpan="3" className="">
-                      <button className="btn">Denied</button>
-                      <button className="btn ml-24 text-red-500">Feedback</button>
+                      <button className="btn ">Denied</button>
+                      <button
+                        className="btn text-red-500 ml-28"
+                        onClick={() => window.my_modal_1.showModal()}
+                      >
+                        Feedback
+                      </button>
                     </td>
                   )}
                 </tr>
@@ -185,8 +203,32 @@ const ManageClasses = () => {
           </table>
         </div>
       </div>
+
+      <dialog id="my_modal_1" className="modal">
+        <form method="dialog" className="modal-box" onSubmit={handleFeedback}>
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <textarea
+          name="feedback"
+            className="textarea textarea-warning w-full h-[200px] mt-10"
+            placeholder="Bio"
+          ></textarea>
+          <div className="modal-action">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn">Close</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </dialog>
     </div>
   );
 };
 
 export default ManageClasses;
+
+
+//<button
+          //   type="submit "
+          //   className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white  "
+          // >
+          //   Submit
+          // </button>

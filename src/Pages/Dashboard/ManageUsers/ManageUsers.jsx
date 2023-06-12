@@ -129,59 +129,68 @@ const ManageUsers = () => {
                 <th>Name</th>
                 <th>email</th>
                 <th>Role</th>
+                <th>Role</th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              {users?.map((user, index) => (
-                <tr key={user._id} className="container text-center">
-                  <th>{index + 1}</th>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div>
-                        <div className="font-bold">{user.name}</div>
+              {users?.map((user, index) => {
+                const isAdmin = user.role === "admin";
+                const isInstructor = user.role === "instructor";
+                const adminButtonDisabled = isButtonDisabled(user._id, "admin");
+                const instructorButtonDisabled = isButtonDisabled(
+                  user._id,
+                  "instructor"
+                );
+
+                return (
+                  <tr key={user._id} className="container text-center">
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="flex items-center space-x-3">
+                        <div>
+                          <div className="font-bold">{user.name}</div>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>{user.email}</td>
-                  <td>
-                    {user.role === "admin" ? (
-                      <p>Admin</p>
-                    ) : (
-                      <>
-                        {isButtonDisabled(user._id, "admin") ? (
-                          <p>Instructor</p>
-                        ) : (
-                          <button
-                            onClick={() => handleAdmin(user)}
-                            className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
-                          >
-                            Make admin
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </td>
-                  <td>
-                    {user.role === "instructor" ? (
-                      <p>Instructor</p>
-                    ) : (
-                      <>
-                        {isButtonDisabled(user._id, "instructor") ? (
-                          <p>Admin</p>
-                        ) : (
-                          <button
-                            onClick={() => handleInstructor(user)}
-                            className="btn btn-outline border-0 border-b-4 border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white"
-                          >
-                            Make Instructor
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td>{user.email}</td>
+                    <td>
+                      {isAdmin ? (
+                        <p>Admin</p>
+                      ) : (
+                        <button
+                          disabled={adminButtonDisabled}
+                          onClick={() => handleAdmin(user)}
+                          className={`btn btn-outline border-0 border-b-4 ${
+                            adminButtonDisabled
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          } border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white`}
+                        >
+                          Make admin
+                        </button>
+                      )}
+                    </td>
+                    <td>
+                      {isInstructor ? (
+                        <p>Instructor</p>
+                      ) : (
+                        <button
+                          disabled={instructorButtonDisabled}
+                          onClick={() => handleInstructor(user)}
+                          className={`btn btn-outline border-0 border-b-4 ${
+                            instructorButtonDisabled
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          } border-b-orange-500 hover:border-b-2 hover:bg-yellow-700 text-yellow-500 hover:text-white`}
+                        >
+                          Make Instructor
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

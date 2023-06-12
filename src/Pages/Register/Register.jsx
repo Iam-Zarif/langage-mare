@@ -9,6 +9,7 @@ import Auth from "../../Hooks/Auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Register = () => {
       });
     }
 
-    // console.log(data);
+   
     createUser(data.email, data.password)
       .then((res) => {
         updateUserInfo(data.name, data.photo)
@@ -50,15 +51,7 @@ const Register = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              // if (data.insertedId) {
-              //   Swal.fire({
-              //     position: "top-end",
-              //     icon: "success",
-              //     title: "User Created Successfully",
-              //     showConfirmButton: false,
-              //     timer: 1500,
-              //   });
-              // }
+              
             });
           reset();
         }).catch(error => console.log(error))
@@ -80,13 +73,13 @@ const Register = () => {
   };
   Title("MARE | REGISTER");
   return (
-    <div className="mx-auto">
+    <Fade cascade damping={0.1}>
       <div>
         <div className="hero  bg-base-200 py-20">
           <div className="hero-content grid grid-cols-1 lg:grid-cols-2 gap-0 ">
             <div className="text-center ">
               <img
-                className="lg:h-[740px] rounded-lg"
+                className="lg:h-[600px] rounded-lg"
                 src="https://cdna.artstation.com/p/assets/images/images/027/682/158/original/liz-gross-signup.gif?1592246526"
                 alt=""
               />
@@ -224,20 +217,13 @@ const Register = () => {
                     </Link>
                   </p>
                 </div>
-                <div>
-                  <p className="divider ">OR</p>
-                </div>
-                <div className="mx-auto mt-5 text-orange-500 bg-black p-5 rounded-full">
-                  <Link>
-                    <FaGoogle />
-                  </Link>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

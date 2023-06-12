@@ -8,12 +8,14 @@ import PopularClasses from "./PopularClasses/PopularClasses";
 const Home = () => {
     Title("LANGUAGE MARE")
     return (
-        <div>
-            <Carousel></Carousel>
-            <PopularClasses></PopularClasses>
-            <HomeInstructors></HomeInstructors>
-            <Timer></Timer>
-        </div>
+      <div>
+        
+
+        <Carousel></Carousel>
+        <PopularClasses></PopularClasses>
+        <HomeInstructors></HomeInstructors>
+        <Timer></Timer>
+      </div>
     );
 };
 

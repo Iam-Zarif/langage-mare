@@ -7,10 +7,11 @@ import { GiSchoolBag } from "react-icons/gi";
 import { TbArmchair, TbChairDirector } from "react-icons/tb";
 import { FaCcAmazonPay, FaUserCheck } from "react-icons/fa";
 import { AiOutlineHistory } from "react-icons/ai";
-import "./dashboard.css";
+import "./dashboard.css";  
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const Dashboard = () => {
   const [instructor] = useInstructor();
@@ -22,7 +23,7 @@ const Dashboard = () => {
   
   Title("MARE | DASHBOARD");
   return (
-    <div>
+    <Fade cascade damping={0.1}>
       <div>
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -42,7 +43,7 @@ const Dashboard = () => {
               {/* Sidebar content here */}
 
               {admin && (
-                <>
+                <Fade cascade damping={0.1}>
                   {/* {console.log(admin.admin)} */}
                   <li>
                     <p className="text-xl text-white font-bold">Admin Home</p>
@@ -65,10 +66,10 @@ const Dashboard = () => {
                       <FaUserCheck /> Manage Users
                     </NavLink>
                   </li>
-                </>
+                </Fade>
               )}
               {instructor && (
-                <>
+                <Fade cascade damping={0.1}>
                   <li>
                     <p className="text-xl text-white font-bold">
                       Instructor Home
@@ -92,10 +93,10 @@ const Dashboard = () => {
                       <TbChairDirector /> My classes
                     </NavLink>
                   </li>
-                </>
+                </Fade>
               )}
               {!admin && !instructor && (
-                <>
+                <Fade cascade damping={0.1}>
                   <li>
                     <p className="text-xl text-white font-bold">Student Home</p>
                   </li>
@@ -135,13 +136,13 @@ const Dashboard = () => {
                       <AiOutlineHistory /> Payment History
                     </NavLink>
                   </li>
-                </>
+                </Fade>
               )}
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

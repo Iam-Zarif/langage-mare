@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Title from "../../Title/Title";
+import { Fade } from "react-awesome-reveal";
 
 
 const Instructors = () => {
@@ -17,7 +18,7 @@ const Instructors = () => {
     );
     console.log(makeInstructor)
     return (
-      <div>
+      <Fade cascade damping={0.1}>
         <h1 className="text-center mt-14 text-4xl">
           Total instructors : {makeInstructor.length}
         </h1>
@@ -51,7 +52,7 @@ const Instructors = () => {
             })}
           </div>
         </div>
-      </div>
+      </Fade>
     );
 };
 

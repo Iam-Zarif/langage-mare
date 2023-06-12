@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import Title from "../Title/Title";
 
 
 const Error = () => {
+  Title("404 Not found")
     return (
       <div>
         <img

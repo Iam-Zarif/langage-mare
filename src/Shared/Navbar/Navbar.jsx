@@ -6,7 +6,7 @@ import "./Navbar.css";
 import Auth from "../../Hooks/Auth";
 import Swal from "sweetalert2";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const { user, logOut } = Auth();
 
   const handleLogOut = () => {
@@ -71,8 +71,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <div className="sticky top-0 z-50">
       <div
-        className={`navbar ${
-          darkMode ? "navbar-dark" : ""
+        className={`navbar
         } bg-base-100 pt-5 sticky`}
       >
         {/* Navbar content */}
@@ -117,12 +116,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end flex lg:flex-row gap-2 flex-col opacity-80 lg:opacity-100 ml-24 lg:ml-0">
-          <input
-            type="checkbox"
-            className="toggle toggle-md mr-10"
-            checked={darkMode}
-            onChange={toggleDarkMode}
-          />
+          
           {user && (
             <>
               <img className="w-14 rounded-full" src={user.photoURL} alt="" />

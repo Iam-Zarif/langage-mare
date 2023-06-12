@@ -5,17 +5,28 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 import Auth from "../../Hooks/Auth";
 import Button from "../../Button/Button";
+import { Fade } from "react-awesome-reveal";
 
 const Classes = () => {
   const {user} = Auth();
   const selectClass =(myClass) =>{
-const selectedClass = {...myClass,email:user.email}
+    const allClass = {
+      className: myClass.className,
+      photo: myClass.photo,
+      instructorName: myClass.instructorName,
+      instructorEmail: myClass.instructorEmail,
+      sit: myClass.sit,
+      price: myClass.price,
+      email: user.email,
+    };
+
+// const selectedClass = {...myClass,email:user.email}
     fetch("http://localhost:5000/selectedClasses", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(selectedClass),
+      body: JSON.stringify(allClass),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +35,7 @@ const selectedClass = {...myClass,email:user.email}
         }
         console.log(data);
       });
-    console.log(selectedClass)
+    
   }
   Title("MARE | CLASSES");
  
@@ -48,7 +59,7 @@ const selectedClass = {...myClass,email:user.email}
   };
 
   return (
-    <div className="">
+    <Fade cascade damping={0.1}>
       <h1 className="text-center mt-14 text-4xl">
         Total Classes: {classes.length}
       </h1>
@@ -70,7 +81,7 @@ const selectedClass = {...myClass,email:user.email}
                     {user ? (
                       <>
                         <Link onClick={() => selectClass(singleClass)}>
-                          <Button name={"Select"} >Enroll now!</Button>
+                          <Button name={"Select"}>Enroll now!</Button>
                         </Link>
                       </>
                     ) : (
@@ -87,7 +98,7 @@ const selectedClass = {...myClass,email:user.email}
           );
         })}
       </div>
-    </div>
+    </Fade>
   );
 };
 
