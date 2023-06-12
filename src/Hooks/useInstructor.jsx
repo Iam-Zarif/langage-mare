@@ -11,7 +11,7 @@ const useInstructor = () => {
       queryKey: ["isInstructor", user.email],
       queryFn: async () => {
         const res = await fetch(
-          `http://localhost:5000/user/instructor/${user.email}`,
+          `https://summer-camp-server-i-am-zarif.vercel.app/user/instructor/${user.email}`,
           {
             headers: { authorization: `bearer ${token}` },
           }

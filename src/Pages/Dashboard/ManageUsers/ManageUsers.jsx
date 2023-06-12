@@ -25,7 +25,7 @@ const ManageUsers = () => {
   }, [disabledButtons]);
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users", {
+    const res = await fetch("https://summer-camp-server-i-am-zarif.vercel.app/users", {
       headers: {
         authorization: `bearer ${token}`,
       },
@@ -49,7 +49,7 @@ const ManageUsers = () => {
     });
     setDisabledButtons(updatedDisabledButtons);
 
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://summer-camp-server-i-am-zarif.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -85,7 +85,7 @@ const ManageUsers = () => {
     });
     setDisabledButtons(updatedDisabledButtons);
 
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://summer-camp-server-i-am-zarif.vercel.app/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

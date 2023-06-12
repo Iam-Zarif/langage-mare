@@ -20,7 +20,7 @@ window.location.reload();
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/myClasses", {
+    fetch("https://summer-camp-server-i-am-zarif.vercel.app/myClasses", {
       headers: { authorization: `bearer ${token}` },
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ window.location.reload();
   }, [token]);
 
   const handleApprove = (approve) => {
-    const url = `http://localhost:5000/all/${approve._id}`;
+    const url = `https://summer-camp-server-i-am-zarif.vercel.app/all/${approve._id}`;
 
     fetch(url, {
       method: "PUT",
@@ -66,7 +66,7 @@ window.location.reload();
   };
 
   const handleDeny = (deny) => {
-    const url = `http://localhost:5000/all/${deny._id}`;
+    const url = `https://summer-camp-server-i-am-zarif.vercel.app/all/${deny._id}`;
 
     fetch(url, {
       method: "PUT",

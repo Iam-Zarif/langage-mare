@@ -9,7 +9,7 @@ const SelectedClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/selectedClasses")
+    fetch("https://summer-camp-server-i-am-zarif.vercel.app/selectedClasses")
       .then((res) => res.json())
       .then((data) => {
         const myClass = data.filter((Classes) => Classes.email === user.email);
@@ -19,7 +19,7 @@ const SelectedClasses = () => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/selectedClasses/${id}`, {
+    fetch(`https://summer-camp-server-i-am-zarif.vercel.app/selectedClasses/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

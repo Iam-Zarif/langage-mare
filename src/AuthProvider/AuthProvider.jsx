@@ -42,7 +42,7 @@ const updateUserInfo =(name,photo) =>{
      setUser(currentUser);
      console.log("Current user is", currentUser);
      if(currentUser){
-      axios.post("http://localhost:5000/jwt" ,{
+      axios.post("https://summer-camp-server-i-am-zarif.vercel.app/jwt" ,{
         email:currentUser.email
       }).then(data =>{
         

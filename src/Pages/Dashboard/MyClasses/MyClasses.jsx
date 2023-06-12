@@ -9,7 +9,7 @@ const MyClasses = () => {
   const {user} = Auth();
   const[classes,setClasses] = useState([]);
   useEffect(() =>{
-fetch("http://localhost:5000/myClasses", {
+fetch("https://summer-camp-server-i-am-zarif.vercel.app/myClasses", {
   headers: { authorization: `bearer ${token}` },
 })
   .then((res) => res.json())

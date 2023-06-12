@@ -6,7 +6,7 @@ import SectionTitle from "../../../SectionTitle/SectionTitle";
 const HomeInstructors = () => {
      const [instructors, setInstructors] = useState([]);
      useEffect(() => {
-       fetch("http://localhost:5000/instructor")
+       fetch("https://summer-camp-server-i-am-zarif.vercel.app/instructor")
          .then((res) => res.json())
          .then((data) => setInstructors(data));
      });

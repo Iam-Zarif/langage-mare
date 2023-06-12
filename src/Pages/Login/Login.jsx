@@ -30,7 +30,7 @@ import { useForm } from "react-hook-form";
 //       const user = result.user;
 //       const savedUser = { name: user.displayName, email: user.email };
 
-//       fetch("http://localhost:5000/users", {
+//       fetch("https://summer-camp-server-i-am-zarif.vercel.app/users", {
 //         method: "POST",
 //         headers: {
 //           "content-type": "application/json",
@@ -192,7 +192,7 @@ const Login = () => {
        const user = result.user;
        const savedUser = { name: user.displayName, email: user.email };
 
-       fetch("http://localhost:5000/users", {
+       fetch("https://summer-camp-server-i-am-zarif.vercel.app/users", {
          method: "POST",
          headers: {
            "content-type": "application/json",

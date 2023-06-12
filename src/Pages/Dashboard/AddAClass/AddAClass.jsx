@@ -27,7 +27,7 @@ price,
 status : "pending"
     }
     console.log(addClass)
-    fetch("http://localhost:5000/classes", {
+    fetch("https://summer-camp-server-i-am-zarif.vercel.app/classes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

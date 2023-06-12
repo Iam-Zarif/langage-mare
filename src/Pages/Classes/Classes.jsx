@@ -21,7 +21,7 @@ const Classes = () => {
     };
 
 // const selectedClass = {...myClass,email:user.email}
-    fetch("http://localhost:5000/selectedClasses", {
+    fetch("https://summer-camp-server-i-am-zarif.vercel.app/selectedClasses", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,7 +42,7 @@ const Classes = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/approvedClasses")
+    fetch("https://summer-camp-server-i-am-zarif.vercel.app/approvedClasses")
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);

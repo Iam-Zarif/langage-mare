@@ -9,7 +9,7 @@ const useAdmin = () => {
     queryKey: ["isAdmin", user.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/user/admin/${user.email}`,
+        `https://summer-camp-server-i-am-zarif.vercel.app/user/admin/${user.email}`,
         {
           headers: { authorization: `bearer ${token}` },
         }
