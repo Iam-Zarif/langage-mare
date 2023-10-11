@@ -2,7 +2,7 @@
 // Navbar.js
 import { Link, NavLink } from "react-router-dom";
 
-import "./Navbar.css";
+import "./Navbar.css"
 import Auth from "../../Hooks/Auth";
 import Swal from "sweetalert2";
 
