@@ -25,6 +25,8 @@
 - react-icons
 - firebase   
 
+## Server Repo
+- https://github.com/Iam-Zarif/language-mare-server
 
 
 ## 🔗 Live site
