@@ -1,7 +1,14 @@
 
 ## Site Name
 
-- Language Mare
+- <h3>Language Mare</h3>
+  
+## Installation
+
+```bash
+  npm i
+  npm run dev
+```
 
 ## Features
 
