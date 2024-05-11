@@ -11,7 +11,7 @@
 ```
 
 ## Features
-
+- admin panel
 - Language course
 - Comprehensive curriculum covering all language skills and proficiency levels.
 - Language immersion opportunities to promote real-world language use and cultural understanding.
